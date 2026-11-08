@@ -1,0 +1,31 @@
+{
+  "claim": "Open-source acoustic leak locator: two sensors, one correlation peak, one position.",
+  "data_label": "simulated data (physics model, 100 trials per point)",
+  "stats": [
+    [
+      "0.5 m",
+      "cast iron 100 m, 20 dB, +-5% speed error",
+      "accent"
+    ],
+    [
+      "2.7 ms",
+      "per correlation, laptop CPU (Python)",
+      "green"
+    ],
+    [
+      "30 %",
+      "PE, 150 m spacing: fixes within 5 m",
+      "amber"
+    ]
+  ],
+  "limit": "Simulated only: no dispersion, reflections or real field recordings yet.",
+  "alt": "Top: a 100 m pipe with two sensors, true leak at 37 m (red) and estimated position (green). Bottom: correlation function with a clear peak at the delay.",
+  "hashtags": [
+    "#IoT",
+    "#Wasserverlust",
+    "#Leckortung",
+    "#SmartWater",
+    "#LoRaWAN"
+  ],
+  "post": "A leak in a buried water main often never shows at the surface. The classic way to find a leak under the road is to listen to the pipe at two points and ask: when did the same hiss arrive at each end?\n\nI built an open-source version of that idea in Python. It simulates a leak with the wave speed taken from pipe material and wall thickness, frequency-dependent attenuation, traffic and pump noise and sensor clock offset, then locates it with cross-correlation, GCC-PHAT and SCOT weighting. It extends to a small pipe network, adds night-noise screening, and defines a 10-byte LoRaWAN payload with raw snippets on request.\n\nMeasured in simulation: median error 0.5 m on a 100 m cast-iron span at 20 dB source SNR with up to 5% wave-speed error, 2.7 ms per correlation on a laptop CPU, and on a 9-node network 86 % of leaks assigned to the correct pipe. On PE pipe at 150 m spacing only 30 % of fixes land within 5 m, because plastic eats the signal.\n\nNot verified: everything here is synthetic. The attenuation numbers are assumptions, and there is no real field recording, dispersion or reflection model yet.\n\nIf you have worked with leak correlators in the field: which effect hurts accuracy most in practice, wave-speed uncertainty or noise?\n\nCode: https://github.com/Usernamepersonperson/leak-noise-correlator"
+}
