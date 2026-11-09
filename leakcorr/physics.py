@@ -7,9 +7,9 @@ Korteweg / Joukowsky result:
 
 K bulk modulus of water, rho density, D inner diameter, e wall thickness,
 E Young's modulus of the pipe wall, psi ~ 1 (anchoring factor).
-References: Wylie & Streeter, "Fluid Transients in Systems" (1993), ch. 2;
+References: Wylie, Streeter & Suo, "Fluid Transients in Systems" (Prentice Hall, 1993), ch. 2;
 Korteweg (1878); Joukowsky (1898). For leak-noise correlation in buried pipes:
-Gao et al., J. Sound Vib. 277 (2004); Hunaidi & Chu, Applied Acoustics 58 (1999).
+Gao et al., J. Sound Vib. 277(1-2), 133-148 (2004); Hunaidi & Chu, Applied Acoustics 58(3), 235-254 (1999).
 
 Attenuation: leak noise decays with distance and the decay grows with frequency, much
 faster in plastic than in metal. The coefficients below are ILLUSTRATIVE assumptions

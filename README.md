@@ -65,7 +65,7 @@ Whitening weightings help in metal (the signal is broadband, so flattening the s
 
 An absolute threshold cannot be shared across sites with different noise floors; comparing each logger with its own history works once the leak is about as loud as the floor.
 
-**Compute**: 2.7 ms per two-sensor correlation (any weighting) for 4 s of data (8192 samples, 7 Welch segments of 2048), pure Python + numpy 2.5.4 on an Intel Haswell-class laptop CPU, one thread. Analytic FFT work is about 0.84 MFLOP per pair. Not measured on a microcontroller.
+**Compute**: 2.7 ms per two-sensor correlation (any weighting) for 4 s of data (8192 samples, 7 Welch segments of 2048), pure Python + numpy 2.5.4 on a 2013 dual-core laptop CPU, one thread. Analytic FFT work is about 0.84 MFLOP per pair. Not measured on a microcontroller.
 
 **Snippet upload over LoRaWAN**: 4 s at 2048 Hz = 8192 samples = 98 ADPCM frames of 48 B (4704 B, 4x smaller than int16). ADPCM reconstruction SNR 16.7 dB (cast iron) and 23.7 dB (PVC) on the simulated recordings; localisation error unchanged (median 0.016 m raw vs 0.016 m ADPCM for cast iron, 0.009 m vs 0.008 m for PVC; no wave-speed error in this test). EU868, 125 kHz, formula airtime: SF7 0.113 s per frame, 11.1 s total, 18.4 min wall clock under a 1 % duty cycle; SF9 36.2 s total, 60 min. Snippets are for on-demand confirmation, not routine reporting.
 
@@ -92,7 +92,7 @@ flowchart LR
   G --> P[peak in +-L/c window] --> X["x = (L + c*tau)/2"]
 ```
 
-- Wave speed: `c = sqrt((K/rho) / (1 + K*D/(E*e)))` with K water bulk modulus, rho density, D diameter, E wall Young's modulus, e wall thickness (Wylie & Streeter, *Fluid Transients in Systems*, 1993; Korteweg 1878). Leak-noise behaviour in plastic pipes: Gao et al., J. Sound Vib. 277 (2004); Hunaidi & Chu, Applied Acoustics 58 (1999).
+- Wave speed: `c = sqrt((K/rho) / (1 + K*D/(E*e)))` with K water bulk modulus, rho density, D diameter, E wall Young's modulus, e wall thickness (Wylie, Streeter & Suo, *Fluid Transients in Systems*, Prentice Hall 1993; Korteweg 1878, Ann. Phys. 241(12), 525-542). Leak-noise behaviour in plastic pipes: Gao, Brennan, Joseph, Muggleton & Hunaidi, J. Sound Vib. 277(1-2), 133-148 (2004); Hunaidi & Chu, Applied Acoustics 58(3), 235-254 (1999).
 - Time delay: generalised cross-correlation (Knapp & Carter, IEEE TASSP 1976), SCOT (Carter et al. 1973), Roth (1971).
 - Lag convention: `tau = t1 - t2`; the leak is `(L + c*tau)/2` from sensor 1. A clock offset `dt` shifts the position by `c*dt/2`; a wave-speed error shifts it in proportion to how far the leak is from the midpoint.
 - Night screening: windows between 02:00 and 04:00, minimum in-band (100-800 Hz) level; the minimum rejects sporadic traffic, a leak raises the floor all night.
