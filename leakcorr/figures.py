@@ -237,7 +237,7 @@ def linkedin(res, path):
         "and there is no real field recording, dispersion or reflection model yet.\n\n"
         "If you have worked with leak correlators in the field: which effect hurts accuracy "
         "most in practice, wave-speed uncertainty or noise?\n\n"
-        "Code: https://github.com/Usernamepersonperson/leak-noise-correlator"
+        "Code: https://github.com/VB-Builds/leak-noise-correlator"
     )
     Path(path).write_text(json.dumps(d, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return d, ci_snr, rows
