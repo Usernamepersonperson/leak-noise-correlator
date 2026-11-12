@@ -114,4 +114,4 @@ None. All signals are synthetic. Material constants (Young's modulus, typical di
 
 ## Licence
 
-MIT, Copyright (c) 2026 Victor Bonilla. See `LICENSE`.
+MIT, Copyright (c) 2026 VB-Builds. See `LICENSE`.
